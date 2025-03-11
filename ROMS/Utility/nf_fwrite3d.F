@@ -3,7 +3,7 @@
 !
 !git $Id$
 !================================================== Hernan G. Arango ===
-!  Copyright (c) 2002-2024 The ROMS/TOMS Group                         !
+!  Copyright (c) 2002-2025 The ROMS Group                              !
 !    Licensed under a MIT/X style license                              !
 !    See License_ROMS.md                                               !
 !=======================================================================
@@ -867,7 +867,6 @@
 #  ifdef MASKING
      &                  Fmask = Amask,                                  &
 #  endif
-     &                  Extract_Flag = Extract_Flag,                    &
      &                  debug = .FALSE.)
       IF (OutThread) THEN
         WRITE (stdout,10) TRIM(Vname(1,ifield)), Stats%min, Stats%max,  &

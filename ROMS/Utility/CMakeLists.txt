@@ -1,6 +1,6 @@
 # git $Id$
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::: David Robertson :::
-# Copyright (c) 2002-2024 The ROMS/TOMS Group                           :::
+# Copyright (c) 2002-2025 The ROMS Group                                :::
 #   Licensed under a MIT/X style license                                :::
 #   See License_ROMS.md                                                 :::
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -55,6 +55,7 @@ list( APPEND _files
       ROMS/Utility/erf.F
       ROMS/Utility/extract_field.F
       ROMS/Utility/extract_obs.F
+      ROMS/Utility/extract_slice.F
       ROMS/Utility/extract_sta.F
       ROMS/Utility/frc_weak.F
       ROMS/Utility/gasdev.F
@@ -170,6 +171,7 @@ list( APPEND _files
       ROMS/Utility/time_corr.F
       ROMS/Utility/timers.F
       ROMS/Utility/uv_rotate.F
+      ROMS/Utility/uv_var_change.F
       ROMS/Utility/vorticity.F
       ROMS/Utility/white_noise.F
       ROMS/Utility/wpoints.F

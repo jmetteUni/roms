@@ -5,7 +5,7 @@
 !
 !git $Id$
 !=======================================================================
-!  Copyright (c) 2002-2024 The ROMS/TOMS Group                         !
+!  Copyright (c) 2002-2025 The ROMS Group                              !
 !    Licensed under a MIT/X style license           Hernan G. Arango   !
 !    See License_ROMS.md                    Alexander F. Shchepetkin   !
 !==================================================== John C. Warner ===
@@ -15,6 +15,28 @@
 !  an implicit algorithm.                                              !
 !                                                                      !
 !=======================================================================
+!
+      USE mod_param
+      USE mod_coupling
+# ifdef DIAGNOSTICS_UV
+      USE mod_diags
+# endif
+      USE mod_forces
+      USE mod_grid
+      USE mod_mixing
+      USE mod_ncparam
+      USE mod_ocean
+      USE mod_scalars
+      USE mod_sources
+!
+      USE exchange_2d_mod
+      USE exchange_3d_mod
+# ifdef DISTRIBUTE
+      USE mp_exchange_mod,   ONLY : mp_exchange2d, mp_exchange3d
+# endif
+      USE uv_var_change_mod, ONLY : uv_C2A_grid
+      USE u3dbc_mod,         ONLY : u3dbc_tile
+      USE v3dbc_mod,         ONLY : v3dbc_tile
 !
       implicit none
 !
@@ -27,15 +49,6 @@
       SUBROUTINE step3d_uv (ng, tile)
 !***********************************************************************
 !
-      USE mod_param
-      USE mod_coupling
-# ifdef DIAGNOSTICS_UV
-      USE mod_diags
-# endif
-      USE mod_forces
-      USE mod_grid
-      USE mod_mixing
-      USE mod_ocean
       USE mod_stepping
 !
 !  Imported variable declarations.
@@ -158,19 +171,6 @@
 # endif
      &                           Huon, Hvom)
 !***********************************************************************
-!
-      USE mod_param
-      USE mod_ncparam
-      USE mod_scalars
-      USE mod_sources
-!
-      USE exchange_2d_mod
-      USE exchange_3d_mod
-# ifdef DISTRIBUTE
-      USE mp_exchange_mod, ONLY : mp_exchange2d, mp_exchange3d
-# endif
-      USE u3dbc_mod,       ONLY : u3dbc_tile
-      USE v3dbc_mod,       ONLY : v3dbc_tile
 !
 !  Imported variable declarations.
 !
@@ -1831,6 +1831,14 @@
      &                    u_stokes(:,:,:), v_stokes(:,:,:))
 #  endif
 # endif
+!
+!-----------------------------------------------------------------------
+!  Compute 3D momentum (ua, va) at RHO-points (A-Grid) for output
+!  purposes and data assimilation where the observations and state
+!  vector is located at the cell-center.
+!-----------------------------------------------------------------------
+!
+      CALL uv_C2A_grid (ng, tile, iNLM, nnew)
 !
       RETURN
       END SUBROUTINE step3d_uv_tile

@@ -4,12 +4,12 @@
 !
 !git $Id$
 !=======================================================================
-!  Copyright (c) 2002-2024 The ROMS/TOMS Group                         !
+!  Copyright (c) 2002-2025 The ROMS Group                              !
 !    Licensed under a MIT/X style license                              !
 !    See License_ROMS.md                            Hernan G. Arango   !
 !========================================== Alexander F. Shchepetkin ===
 !                                                                      !
-!  This routine is the main driver for ROMS/TOMS nonlinear model (NLM) !
+!  This routine is the main driver for ROMS nonlinear model (NLM)      !
 !  when configurated as a full 3D baroclinic ocean model. It advances  !
 !  forward the NLM for all nested grids, if any, for the specified     !
 !  time interval (seconds), RunInterval.                               !
@@ -73,8 +73,7 @@
       USE gls_corstep_mod,      ONLY : gls_corstep
       USE gls_prestep_mod,      ONLY : gls_prestep
 # endif
-# if defined NLM_OUTER             || defined RBL4DVAR                 || \
-  defined RBL4DVAR_ANA_SENSITIVITY || defined RBL4DVAR_FCT_SENSITIVITY
+# if defined RBL4DVAR && defined RPCG
       USE frc_iau_mod,          ONLY : frc_iau
 # endif
 # if defined DIFF_3DCOEF || defined VISC_3DCOEF

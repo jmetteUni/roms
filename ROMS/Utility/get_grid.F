@@ -5,7 +5,7 @@
 !
 !git $Id$
 !================================================== Hernan G. Arango ===
-!  Copyright (c) 2002-2024 The ROMS/TOMS Group                         !
+!  Copyright (c) 2002-2025 The ROMS Group                              !
 !    Licensed under a MIT/X style license                              !
 !    See License_ROMS.md                                               !
 !=======================================================================
@@ -3152,7 +3152,7 @@
           CASE ('wtype_grid')
             pioVar%vd=var_desc(i)
             pioVar%gtype=r2dvar
-            IF (KIND(GRID(ng)%Jwtype).eq.8) THEN
+            IF (KIND(MIXING(ng)%Jwtype).eq.8) THEN
               pioVar%dkind=PIO_double
               ioDesc => ioDesc_dp_r2dvar(ng)
             ELSE

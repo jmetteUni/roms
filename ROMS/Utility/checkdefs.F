@@ -3,7 +3,7 @@
 !
 !git $Id$
 !================================================== Hernan G. Arango ===
-!  Copyright (c) 2002-2024 The ROMS/TOMS Group                         !
+!  Copyright (c) 2002-2025 The ROMS Group                              !
 !    Licensed under a MIT/X style license                              !
 !    See License_ROMS.md                                               !
 !=======================================================================
@@ -1339,6 +1339,13 @@
      &   'Including advection of ice tracers'
       is=LEN_TRIM(Coptions)+1
       Coptions(is:is+12)=' ICE_ADVECT,'
+# endif
+# ifdef ICE_ALBEDO
+!
+      IF (Master) WRITE (stdout,20) 'ICE_ALB_EC92',                     &
+     &   'Surface albedo computation over seawater, snow, or ice'
+      is=LEN_TRIM(Coptions)+1
+      Coptions(is:is+12)=' ICE_ALBEDO,'
 # endif
 # ifdef ICE_ALB_EC92
 !
@@ -3088,6 +3095,13 @@
      &   'Coriolis term'
       is=LEN_TRIM(Coptions)+1
       Coptions(is:is+8)=' UV_COR,'
+#endif
+#ifdef UV_DESTAGGERED
+!
+      IF (Master) WRITE (stdout,20) 'UV_DESTAGGERED',                   &
+     &   'Currents destaggering to cell-center for data assimilation'
+      is=LEN_TRIM(Coptions)+1
+      Coptions(is:is+16)=' UV_DESTAGGERED,'
 #endif
 #ifdef UV_ADV
 # ifdef UV_C2ADVECTION

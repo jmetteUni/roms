@@ -5,7 +5,7 @@
 !git $Id$
 !svn $Id$
 !================================================== Hernan G. Arango ===
-!  Copyright (c) 2002-2024 The ROMS/TOMS Group                         !
+!  Copyright (c) 2002-2025 The ROMS Group                              !
 !    Licensed under a MIT/X style license                              !
 !    See License_ROMS.md                                               !
 !=======================================================================
@@ -24,7 +24,9 @@
 # endif
 !
       USE ini_fields_mod, ONLY : ini_fields, ini_zeta
+# ifdef SOLVE3D
       USE set_depth_mod,  ONLY : set_depth
+# endif
 !
       implicit none
 !

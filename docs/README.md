@@ -4,7 +4,7 @@
 
 # License
 
-**Copyright (c) 2002-2024 The ROMS/TOMS Group**
+**Copyright (c) 2002-2025 The ROMS Group**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -65,13 +65,18 @@ updating, improving, and correcting defects/bugs to the **ROMS** source code.
 Also, it is the version used in the **ROMS-JEDI** interface hosted at
 https://github.com/JCSDA-internal, which is currently private. Use the following
 command to download the **ROMS** source code:
-```
+
+---
+``` make
 git clone https://github.com/myroms/roms.git                 (default)
 git clone https://github.com/myroms/roms.git <source_dir>
 ```
+---
+
 The idealized and realistic **ROMS** Test Cases and the Matlab processing
 software can be downloaded from:
-```
+
+``` make
 git clone https://github.com/myroms/roms_test.git
 git clone https://github.com/myroms/roms_matlab.git
 ```
